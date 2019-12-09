@@ -39,6 +39,12 @@ def communicate_with_server(client: GameClient):
         client_socket.sendto(network_message, (client.server_addr, server.SERVER_PORT))
         data_packet = client_socket.recvfrom(1024)
         data = data_packet[0]
+        data = str(data, "UTF-8")
+        xpos = data.split(',')[0]
+        xpos = int(xpos)
+        ypos = int(data.split(",")[1])
+        client.player.center_x = xpos
+        client.player.center_y = ypos
         client.message = data
 
 def main():

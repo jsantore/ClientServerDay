@@ -24,9 +24,9 @@ def run_server():
         data_packet = server_socket.recvfrom(1024)
         data = data_packet[0]
         data = str(data, "UTF-8")
-        if data.find("LEFT")>0:
+        if data.find("LEFT")>=0:
             player_pos[0] -=1
-        elif data.find("RIGHT")>0:
+        elif data.find("RIGHT")>=0:
             player_pos[0]+= 1
         client_address = data_packet[1]
         encoded_message = str.encode(f"{player_pos[0]},{player_pos[1]}")
